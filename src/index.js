@@ -1,0 +1,1 @@
+export { devirt } from './devirt';

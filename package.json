@@ -1,0 +1,56 @@
+{
+  "name": "@redneckz/react-devirt",
+  "version": "0.0.0",
+  "author": "Alexander Alexandrov",
+  "description": "Devirtualize React and reveal virtual DOM as regular DOM for different purposes (E2E testing, browser plugins)",
+  "keywords": [
+    "react",
+    "DOM",
+    "E2E",
+    "testing",
+    "devirtualization"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/redneckz/react-devirt"
+  },
+  "bugs": {
+    "url": "https://github.com/redneckz/react-devirt/issues"
+  },
+  "homepage": "https://github.com/redneckz/react-devirt#readme",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "browser": "dist/index.min.js",
+  "files": [
+    "src",
+    "lib",
+    "es",
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^16.7.0-0",
+    "hoist-non-react-statics": "^3.2.1"
+  },
+  "devDependencies": {
+    "@redneckz/react-lib-config": "~0.0.1",
+    "hoist-non-react-statics": "~3.2.1",
+    "react": "~16.7.0",
+    "react-test-renderer": "~16.7.0"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "prebuild": "npm run eslint && npm run jest && npm run clean",
+    "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "build:commonjs": "cross-env NODE_ENV=cjs react-lib-build",
+    "build:es": "cross-env NODE_ENV=es react-lib-build",
+    "build:umd": "cross-env NODE_ENV=development react-lib-build",
+    "build:umd:min": "cross-env NODE_ENV=production react-lib-build",
+    "clean": "rimraf lib es dist coverage",
+    "pretest": "npm run eslint",
+    "test": "npm run jest && npm run coveralls",
+    "eslint": "eslint \"src/**/*.js?(x)\" --cache --cache-location \"./.cache\"",
+    "jest": "cross-env NODE_ENV=test jest",
+    "coveralls": "coveralls < coverage/lcov.info"
+  }
+}
