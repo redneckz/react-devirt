@@ -19,18 +19,18 @@ describe('devirtComponent', () => {
 
   it('should reveal types of all "invisible" ancestors ("data-devirt-type" attribute)', () => {
     const Foo = ({ children }) => children; // Has no own DOM elements, so invisible
-    const Bar = props => <div {...props} />;
+    const Bar = ({ quux, children }) => <div quux={quux}>{children}</div>;
     const DevirtFoo = devirtComponent()(Foo);
     const DevirtBar = devirtComponent()(Bar);
     expect(TestRenderer.create(
       <DevirtFoo>
         <DevirtBar quux>
-          <span plugh>baz</span>
+          <span>baz</span>
         </DevirtBar>
       </DevirtFoo>,
     ).toJSON()).toEqual(TestRenderer.create(
       <div data-devirt-type="Bar,Foo" quux>
-        <span plugh>baz</span>
+        <span>baz</span>
       </div>,
     ).toJSON());
   });
@@ -41,11 +41,29 @@ describe('devirtComponent', () => {
     const DevirtFoo = devirtComponent(createElementData)(Foo);
     expect(TestRenderer.create(
       <DevirtFoo bar>
-        <span quux>baz</span>
+        <span>baz</span>
       </DevirtFoo>,
     ).toJSON()).toEqual(TestRenderer.create(
       <div data-devirt-type="Foo" data-devirt-bar bar>
-        <span quux>baz</span>
+        <span>baz</span>
+      </div>,
+    ).toJSON());
+  });
+
+  it('should accumulate data attributes from "invisible" ancestors', () => {
+    const Foo = ({ children }) => children;
+    const Bar = ({ quux, children }) => <div quux={quux}>{children}</div>;
+    const DevirtFoo = devirtComponent((Target, { plugh }) => ({ foo: plugh }))(Foo);
+    const DevirtBar = devirtComponent((Target, { quux }) => ({ bar: quux }))(Bar);
+    expect(TestRenderer.create(
+      <DevirtFoo plugh>
+        <DevirtBar quux>
+          <span>baz</span>
+        </DevirtBar>
+      </DevirtFoo>,
+    ).toJSON()).toEqual(TestRenderer.create(
+      <div data-devirt-type="Bar,Foo" data-devirt-foo data-devirt-bar quux>
+        <span>baz</span>
       </div>,
     ).toJSON());
   });
