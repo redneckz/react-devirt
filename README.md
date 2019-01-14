@@ -6,9 +6,74 @@ Devirtualize React and reveal virtual DOM as regular DOM for different purposes 
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 
+## Installation
+
+```shell
+npm install --save @redneckz/react-devirt
+```
+
 ## How-to
 
-...
+### Basic Example
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom'
+import { devirt } from 'react-devirt';
+
+devirt();
+
+const Foo = props => <div {...props} />;
+
+ReactDOM.render(
+  <Foo quux>
+    <span plugh>baz</span>
+  </Foo>,
+  document.body,
+);
+```
+
+will produce
+
+```html
+<div data-devirt-type="Foo" quux>
+  <span plugh>baz</span>
+</div>
+```
+
+### Advanced Example
+
+By default only "data-devirt-type" is computed.
+Other data attributes can be declared by means of custom props serializer.
+All such attributes are prefixed with "data-devirt".
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom'
+import { devirt } from 'react-devirt';
+
+devirt((TargetType, { quux, plugh }) => ({ quux, plugh }));
+
+const Foo = ({ children }) => children; // Has no own DOM elements, so invisible
+const Bar = ({ plugh, children }) => <div plugh={plugh}>{children}</div>;
+
+ReactDOM.render(
+  <Foo quux>
+    <Bar plugh>
+      <span>baz</span>
+    </Bar>
+  </Foo>,
+  document.body,
+);
+```
+
+will produce
+
+```html
+<div data-devirt-type="Bar,Foo" data-devirt-quux data-devirt-plugh plugh>
+  <span>baz</span>
+</div>
+```
 
 # License
 
