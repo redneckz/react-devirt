@@ -33,7 +33,7 @@
     "hoist-non-react-statics": "^3.2.1"
   },
   "devDependencies": {
-    "@redneckz/react-lib-config": "~0.0.1",
+    "@redneckz/react-lib-config": "0.0.2",
     "hoist-non-react-statics": "~3.2.1",
     "react": "~16.7.0",
     "react-test-renderer": "~16.7.0"
