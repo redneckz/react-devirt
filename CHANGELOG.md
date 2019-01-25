@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.2] - 2018-12-04
+
+### Added
+
+-   Useful utility *flattenNamespace* to prepare some kinds of *createElementData*
+
 ## 0.0.1 - 2018-12-04
 
 ### Added
@@ -17,5 +23,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 -   *Travis CI* integration
 -   *Coveralls* integration
 
-[Unreleased]: https://github.com/redneckz/pipe/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/redneckz/pipe/compare/v0.0.2...HEAD
 [0.0.2]: https://github.com/redneckz/pipe/compare/v0.0.1...v0.0.2
