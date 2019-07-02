@@ -13,12 +13,17 @@ export function toRegularComponent(SomeComponent) {
     }
   };
   RegularComponent.displayName = SomeComponent.displayName || SomeComponent.name;
-  RegularComponent.defaultProps = SomeComponent.defaultProps;
-  RegularComponent.getDerivedStateFromProps = SomeComponent.getDerivedStateFromProps;
-  RegularComponent.getDerivedStateFromError = SomeComponent.getDerivedStateFromError;
-  RegularComponent.childContextTypes = SomeComponent.childContextTypes;
-  RegularComponent.contextTypes = SomeComponent.contextTypes;
-  RegularComponent.contextType = SomeComponent.contextType;
+  [
+    'defaultProps',
+    'getDerivedStateFromProps',
+    'getDerivedStateFromError',
+    'childContextTypes',
+    'contextTypes',
+    'contextType',
+  ].filter(field => field in SomeComponent)
+    .forEach((field) => {
+      RegularComponent[field] = SomeComponent[field];
+    });
   hoistNonReactStatics(RegularComponent, SomeComponent);
   return RegularComponent;
 }

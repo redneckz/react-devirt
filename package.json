@@ -30,13 +30,12 @@
   ],
   "peerDependencies": {
     "react": "^16.7.0-0",
-    "hoist-non-react-statics": "^3.2.1"
+    "hoist-non-react-statics": "^3.3.0"
   },
   "devDependencies": {
-    "@redneckz/react-lib-config": "0.0.2",
-    "hoist-non-react-statics": "~3.2.1",
-    "react": "~16.7.0",
-    "react-test-renderer": "~16.7.0"
+    "@redneckz/react-lib-config": "0.0.7",
+    "hoist-non-react-statics": "~3.3.0",
+    "react-test-renderer": "~16.8.6"
   },
   "scripts": {
     "prepublish": "npm run build",
