@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.3] - 2019-07-02
+
+### Changed
+
+-   Updated dependencies (React, ...)
+
+### Added
+
+-   Bundle size badge
+
 ## [0.0.2] - 2018-12-04
 
 ### Added
@@ -23,5 +33,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 -   *Travis CI* integration
 -   *Coveralls* integration
 
-[Unreleased]: https://github.com/redneckz/pipe/compare/v0.0.2...HEAD
+[Unreleased]: https://github.com/redneckz/pipe/compare/v0.0.3...HEAD
+[0.0.3]: https://github.com/redneckz/pipe/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/redneckz/pipe/compare/v0.0.1...v0.0.2
