@@ -5,6 +5,7 @@ Devirtualize React and reveal virtual DOM as regular DOM for different purposes 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
+[![Bundle size][bundlephobia-image]][bundlephobia-url]
 
 ## Installation
 
@@ -85,3 +86,5 @@ will produce
 [travis-url]: https://travis-ci.org/redneckz/react-devirt
 [coveralls-image]: https://coveralls.io/repos/github/redneckz/react-devirt/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/redneckz/react-devirt?branch=master
+[bundlephobia-image]: https://badgen.net/bundlephobia/min/@redneckz/react-rxjs
+[bundlephobia-url]: https://bundlephobia.com/result?p=@redneckz/react-rxjs
