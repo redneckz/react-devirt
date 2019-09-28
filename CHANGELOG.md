@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.4] - 2019-09-28
+
+### Changed
+
+-   Updated dependencies (React, ...)
+
+### Added
+
+-   Support of functional components with hooks inside
+
 ## [0.0.3] - 2019-07-02
 
 ### Changed
@@ -33,6 +43,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 -   *Travis CI* integration
 -   *Coveralls* integration
 
-[Unreleased]: https://github.com/redneckz/pipe/compare/v0.0.3...HEAD
+[Unreleased]: https://github.com/redneckz/pipe/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/redneckz/pipe/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/redneckz/pipe/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/redneckz/pipe/compare/v0.0.1...v0.0.2
