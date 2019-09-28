@@ -1,7 +1,7 @@
 import { decorateRender } from './decorate-render';
 
 jest.mock('./to-regular-component', () => ({
-  toRegularComponent: SomeComponent => SomeComponent,
+  toRegularComponent: (SomeComponent) => SomeComponent,
 }));
 
 describe('decorateRender', () => {

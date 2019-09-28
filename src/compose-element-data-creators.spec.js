@@ -1,8 +1,8 @@
 import { composeElementDataCreators } from './compose-element-data-creators';
 
 describe('composeElementDataCreators', () => {
-  const fooDataCreator = foo => ({ foo });
-  const barDataCreator = bar => ({ bar });
+  const fooDataCreator = (foo) => ({ foo });
+  const barDataCreator = (bar) => ({ bar });
 
   it('should combine two data creators into new one', () => {
     const dataCreator = composeElementDataCreators(fooDataCreator, barDataCreator);

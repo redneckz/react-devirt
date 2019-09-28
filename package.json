@@ -29,13 +29,13 @@
     "dist"
   ],
   "peerDependencies": {
-    "react": "^16.7.0-0",
+    "react": "^16.10.0-0",
     "hoist-non-react-statics": "^3.3.0"
   },
   "devDependencies": {
-    "@redneckz/react-lib-config": "0.0.7",
-    "hoist-non-react-statics": "~3.3.0",
-    "react-test-renderer": "~16.8.6"
+    "@redneckz/react-lib-config": "0.0.9",
+    "hoist-non-react-statics": "3.3.0",
+    "react-test-renderer": "16.10.0"
   },
   "scripts": {
     "prepublish": "npm run build",
@@ -47,9 +47,8 @@
     "build:umd:min": "cross-env NODE_ENV=production react-lib-build",
     "clean": "rimraf lib es dist coverage",
     "pretest": "npm run eslint",
-    "test": "npm run jest && npm run coveralls",
+    "test": "npm run jest",
     "eslint": "eslint \"src/**/*.js?(x)\" --cache --cache-location \"./.cache\"",
-    "jest": "cross-env NODE_ENV=test jest",
-    "coveralls": "coveralls < coverage/lcov.info"
+    "jest": "cross-env NODE_ENV=test jest"
   }
 }

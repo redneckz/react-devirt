@@ -4,11 +4,11 @@ export function flattenNamespace(namespace, visited = new Set()) {
   }
   const modulesList = Object.values(namespace)
     .filter(Boolean)
-    .filter(module => !visited.has(module));
-  modulesList.forEach(module => visited.add(module));
+    .filter((module) => !visited.has(module));
+  modulesList.forEach((module) => visited.add(module));
   const subNamespacesList = modulesList.filter(isPotentialSubNamespace);
   return modulesList.concat(
-    ...subNamespacesList.map(subNamespace => flattenNamespace(subNamespace, visited)),
+    ...subNamespacesList.map((subNamespace) => flattenNamespace(subNamespace, visited)),
   );
 }
 

@@ -19,7 +19,7 @@ describe('toRegularComponent', () => {
   });
 
   it('should mimic functional component with regular one', () => {
-    const Foo = props => <div {...props} />;
+    const Foo = (props) => <div {...props} />;
     const RegularFoo = toRegularComponent(Foo);
     expect(TestRenderer.create(
       <RegularFoo bar>baz</RegularFoo>,

@@ -3,7 +3,7 @@
 Devirtualize React and reveal virtual DOM as regular DOM for different purposes (E2E testing, browser plugins)
 
 [![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+[![Build Status][build-image]][build-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![Bundle size][bundlephobia-image]][bundlephobia-url]
 
@@ -20,7 +20,7 @@ npm install --save @redneckz/react-devirt
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { devirt } from 'react-devirt';
+import { devirt } from '@redneckz/react-devirt';
 
 devirt();
 
@@ -51,7 +51,7 @@ All such attributes are prefixed with "data-devirt".
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { devirt } from 'react-devirt';
+import { devirt } from '@redneckz/react-devirt';
 
 devirt((TargetType, { quux, plugh }) => ({ quux, plugh }));
 
@@ -82,9 +82,9 @@ will produce
 
 [npm-image]: https://badge.fury.io/js/%40redneckz%2Freact-devirt.svg
 [npm-url]: https://www.npmjs.com/package/%40redneckz%2Freact-devirt
-[travis-image]: https://travis-ci.org/redneckz/react-devirt.svg?branch=master
-[travis-url]: https://travis-ci.org/redneckz/react-devirt
+[build-image]: https://cloud.drone.io/api/badges/redneckz/react-devirt/status.svg
+[build-url]: https://cloud.drone.io/redneckz/react-devirt
 [coveralls-image]: https://coveralls.io/repos/github/redneckz/react-devirt/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/github/redneckz/react-devirt?branch=master
-[bundlephobia-image]: https://badgen.net/bundlephobia/min/@redneckz/react-rxjs
-[bundlephobia-url]: https://bundlephobia.com/result?p=@redneckz/react-rxjs
+[bundlephobia-image]: https://badgen.net/bundlephobia/min/@redneckz/react-devirt
+[bundlephobia-url]: https://bundlephobia.com/result?p=@redneckz/react-devirt

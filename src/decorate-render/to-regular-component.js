@@ -20,7 +20,7 @@ export function toRegularComponent(SomeComponent) {
     'childContextTypes',
     'contextTypes',
     'contextType',
-  ].filter(field => field in SomeComponent)
+  ].filter((field) => field in SomeComponent)
     .forEach((field) => {
       RegularComponent[field] = SomeComponent[field];
     });

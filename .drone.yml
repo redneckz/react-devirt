@@ -1,0 +1,50 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: test
+    image: node:10
+    commands:
+      - npm install
+      - npm test
+
+  - name: coveralls
+    image: lizheming/drone-coveralls
+    environment:
+      COVERALLS_REPO_TOKEN:
+        from_secret: COVERALLS_TOKEN
+    settings:
+      files:
+        - ./coverage/lcov.info
+
+trigger:
+  event:
+    - push
+    - pull_request
+
+---
+kind: pipeline
+type: docker
+name: publish
+
+steps:
+  - name: build
+    image: node:10
+    commands:
+      - npm install
+      - npm run build
+
+  - name: npm
+    image: plugins/npm
+    settings:
+      username: redneckz
+      password:
+        from_secret: npm_password
+      email: aalexandrovv@gmail.com
+      access: public
+
+trigger:
+  event:
+    - tag

@@ -23,7 +23,7 @@ describe('injectPropsIntoElement', () => {
   });
 
   it('should inject props down to first DOM or custom element of hierarchy', () => {
-    const Foo = props => <div {...props} />;
+    const Foo = (props) => <div {...props} />;
     expect(injectPropsIntoElement(
       { foo: 123 },
     )(
@@ -45,17 +45,17 @@ describe('injectPropsIntoElement', () => {
     expect(injectPropsIntoElement(
       { foo: 123 },
     )(
-      <React.Fragment>
+      <>
         <div bar>
           <span>456</span>
         </div>
-      </React.Fragment>,
+      </>,
     )).toEqual(
-      <React.Fragment>
+      <>
         <div foo={123} bar>
           <span>456</span>
         </div>
-      </React.Fragment>,
+      </>,
     );
   });
 });

@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": false,
+  "files.eol": "\n",
+  "files.autoGuessEncoding": true,
+  "editor.renderWhitespace": "all",
+  "editor.renderControlCharacters": true,
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 120
+}

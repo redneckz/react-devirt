@@ -4,7 +4,7 @@ import { devirtComponent } from './devirt-component';
 
 describe('devirtComponent', () => {
   it('should reveal component type ("data-devirt-type" attribute)', () => {
-    const Foo = props => <div {...props} />;
+    const Foo = (props) => <div {...props} />;
     const DevirtFoo = devirtComponent()(Foo);
     expect(TestRenderer.create(
       <DevirtFoo quux>
@@ -36,7 +36,7 @@ describe('devirtComponent', () => {
   });
 
   it('should reveal some props by means of data attributes', () => {
-    const Foo = props => <div {...props} />;
+    const Foo = (props) => <div {...props} />;
     const createElementData = (Target, { bar }) => ({ bar });
     const DevirtFoo = devirtComponent(createElementData)(Foo);
     expect(TestRenderer.create(

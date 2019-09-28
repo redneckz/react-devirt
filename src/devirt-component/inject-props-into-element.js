@@ -14,7 +14,7 @@ export function injectPropsIntoElement(injectedProps) {
       // Go deeper
       return React.cloneElement(
         el,
-        null, // Оverjump special cases like React.Fragment
+        null, // Overjump special cases like React.Fragment
         Array.isArray(el.props.children)
           ? React.Children.map(el.props.children, injectProps)
           : injectProps(el.props.children),
