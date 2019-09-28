@@ -5,19 +5,15 @@ const DEVIRT_DATA_PREFIX = 'data-devirt-';
 
 export function devirtComponent(createElementData = () => ({})) {
   return (Target) => decorateRender(
-    (render) => function devirtualizedRender(...args) {
+    (props) => {
       const typeName = Target.displayName || Target.name || '';
-      const parentTypeName = this.props[`${DEVIRT_DATA_PREFIX}type`];
+      const parentTypeName = props[`${DEVIRT_DATA_PREFIX}type`];
       const injectedProps = Object.assign(
-        ...findoutDataAttrs(this.props), // Pass through parent data attributes
+        ...findoutDataAttrs(props), // Pass through parent data attributes
         { [`${DEVIRT_DATA_PREFIX}type`]: parentTypeName ? [typeName, parentTypeName].join() : typeName },
-        prefixDataAttrs(createElementData(Target, this.props)),
+        prefixDataAttrs(createElementData(Target, props)),
       );
-      return injectPropsIntoElement(
-        injectedProps,
-      )(
-        render.apply(this, args),
-      );
+      return injectPropsIntoElement(injectedProps);
     },
   )(
     Target,

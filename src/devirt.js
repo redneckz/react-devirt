@@ -30,7 +30,6 @@ function devirtType(type) {
     return type;
   }
   if (!type.Devirtualized) {
-    // eslint-disable-next-line no-param-reassign
     type.Devirtualized = devirtComponent(devirt.createElementData)(type);
   }
   return type.Devirtualized;
