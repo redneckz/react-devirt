@@ -1,6 +1,6 @@
 {
   "name": "@redneckz/react-devirt",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Alexander Alexandrov",
   "description": "Devirtualize React and reveal virtual DOM as regular DOM for different purposes (E2E testing, browser plugins)",
   "keywords": [
