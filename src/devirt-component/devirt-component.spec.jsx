@@ -56,6 +56,19 @@ describe('devirtComponent', () => {
     ).toJSON());
   });
 
+  it('should override default behaviour related to data-devirt-type by means of createElementData', () => {
+    const Foo = (props) => <div {...props} />;
+    const createElementData = (Target, { suffix }) => ({ type: `${Target.name}::${suffix}` });
+
+    const DevirtFoo = devirtComponent(createElementData)(Foo);
+
+    expect(TestRenderer.create(
+      <DevirtFoo suffix="suffix" />,
+    ).toJSON()).toEqual(TestRenderer.create(
+      <div data-devirt-type="Foo::suffix" suffix="suffix" />,
+    ).toJSON());
+  });
+
   it('should accumulate data attributes from "invisible" ancestors', () => {
     const Foo = ({ children }) => children;
     const Bar = ({ quux, children }) => <div quux={quux}>{children}</div>;

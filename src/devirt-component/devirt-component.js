@@ -4,13 +4,16 @@ import { injectPropsIntoElement } from './inject-props-into-element';
 const DEVIRT_DATA_PREFIX = 'data-devirt-';
 const DEVIRT_TYPE_DATA_ATTR = `${DEVIRT_DATA_PREFIX}type`;
 
-export function devirtComponent(createElementData = () => ({})) {
+const DEFAULT_ELEMENT_DATA = () => ({});
+
+export function devirtComponent(createElementData = DEFAULT_ELEMENT_DATA) {
   return (Target) => decorateRender(
     (props) => {
+      const elementData = createElementData(Target, props);
       const injectedProps = Object.assign(
         ...findoutDataAttrs(props), // Pass through parent data attributes
-        computeDevirtTypeDataAttr(Target, props),
-        prefixDataAttrs(createElementData(Target, props)),
+        prefixDataAttrs(elementData),
+        computeDevirtTypeDataAttr(Target, props, elementData),
       );
       return injectPropsIntoElement(injectedProps);
     },
@@ -27,8 +30,8 @@ function findoutDataAttrs(props) {
   );
 }
 
-function computeDevirtTypeDataAttr(Target, props) {
-  const typeName = Target.displayName || Target.name || '';
+function computeDevirtTypeDataAttr(Target, props, { type }) {
+  const typeName = type || Target.displayName || Target.name || '';
   const parentTypeName = props[DEVIRT_TYPE_DATA_ATTR];
   const devirtTypeAttr = [typeName, parentTypeName].filter(Boolean).join();
   return { [DEVIRT_TYPE_DATA_ATTR]: devirtTypeAttr };
